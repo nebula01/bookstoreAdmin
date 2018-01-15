@@ -32,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/css/**",
 			"/js/**",
 			"/image/**",
-			"/",
 			"/newUser",
 			"/forgetPassword",
 			"/login",
@@ -50,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable().cors().disable()
 			.formLogin().failureUrl("/login?error")
-			/*.defaultSuccessUrl("/")*/
+			.defaultSuccessUrl("/") // 로그인 성공시 루트로
 			.loginPage("/login").permitAll()
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

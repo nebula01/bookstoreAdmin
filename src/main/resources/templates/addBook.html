@@ -10,44 +10,54 @@
 			<form class="form-horizontal" th:action="@{/book/add}" method="post"
 				enctype="multipart/form-data">
 				<fieldset>
-					<legend class="center-block">등록할 책 정보
-					<span style="font-size: small"> * 표시는 필수 항목</span>
+					<legend class="center-block">
+						등록할 책 정보 <span style="font-size: small"> * 표시는 필수 항목</span>
 					</legend>
 					<!-- 제목 -->
 					<div class="form-group">
-						<label for="제목">* 제목</label> <input type="text"
-							class="form-control" id="title" th:value="${book.title}"
-							required="required" placeholder="책 제목" /> <span
-							class="help-block">책 제목</span>
+						<label class="col-md-2 control-label" for="title">* 제목</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" name="title" id="title" 
+								th:value="${book.title}" required="required" placeholder="책 제목" />
+							<span class="help-block">책 제목</span>
+						</div>
 					</div>
 
 					<!-- 작가 -->
 					<div class="form-group">
-						<label for="저자">* 저자</label> <input type="text"
-							class="form-control" id="author" th:value="${book.author}"
-							required="required" placeholder="저자" /> <span class="help-block">지은이</span>
+						<label class="col-md-2 control-label" for="author">* 저자</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="author" name="author"
+								th:value="${book.author}" required="required" placeholder="저자" />
+							<span class="help-block">지은이</span>
+						</div>
 					</div>
 
 					<!-- 출판사 -->
 					<div class="form-group">
-						<label for="출판사">출판사</label> <input type="text"
-							class="form-control" id="publisher" th:value="${book.publisher}"
-							placeholder="출판사" /> <span class="help-block">책 출판사</span>
+						<label class="col-md-2 control-label" for="publisher">출판사</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="publisher" name="publisher"
+								th:value="${book.publisher}" placeholder="출판사" /> <span
+								class="help-block">책 출판사</span>
+						</div>
 					</div>
 
 					<!-- 출판일 -->
 					<div class="form-group">
-						<label for="출판일">출판일</label> <input type="date"
-							class="form-control" id="publicationDate"
-							th:value="${book.publicationDate}" placeholder="책 출판일" /> <span
-							class="help-block">책 출판일</span>
+						<label class="col-md-2 control-label" for="publicationDate">출판일</label>
+						<div class="col-md-8">
+							<input type="date" class="form-control" id="publicationDate" name="publicationDate"
+								th:value="${book.publicationDate}" placeholder="책 출판일" /> <span
+								class="help-block">책 출판일</span>
+						</div>
 					</div>
 
 					<!-- 언어 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="언어">언어</label>
-						<div class="col-xs-8">
-							<select th:value="${book.language}" id="language"
+						<label class="col-md-2 control-label" for="language">언어</label>
+						<div class="col-md-8">
+							<select th:value="${book.language}" id="language" name="language"
 								class="form-control">
 								<option value="english">영어</option>
 								<option value="korean">국어</option>
@@ -57,9 +67,9 @@
 
 					<!-- 카테고리 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="카테고리">* 카테고리</label>
-						<div class="col-xs-8">
-							<select th:value="${book.category}" id="category"
+						<label class="col-md-2 control-label" for="category">* 카테고리</label>
+						<div class="col-md-8">
+							<select th:value="${book.category}" id="category" name="category" 
 								class="form-control">
 								<option value="" selected="selected" disabled="disabled">카테고리를
 									선택하세요</option>
@@ -77,18 +87,22 @@
 							</select>
 						</div>
 					</div>
+
 					<!-- 페이지 수 -->
 					<div class="form-group">
-						<label for="페이지수">페이지수</label><input type="number"
-							name="numberOfPages" class="form-control" id="pageNumber"
-							th:value="${book.numberOfPages}" placeholder="전체 페이지 수" /> <span
-							class="help-block">책 전체 페이지 수</span>
+						<label class="col-md-2 control-label" for="pageNumber">페이지수</label>
+						<div class="col-md-8">
+							<input type="number" name="numberOfPages" class="form-control"
+								id="pageNumber" th:value="${book.numberOfPages}"
+								placeholder="전체 페이지 수" /> <span class="help-block">책 전체
+								페이지 수</span>
+						</div>
 					</div>
 
 					<!-- 표지 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="커버">커버</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="format">커버</label>
+						<div class="col-md-8">
 							<select th:value="${book.format}" id="format" name="format"
 								class="form-control">
 								<option value="paperback">종이커버</option>
@@ -99,15 +113,18 @@
 
 					<!-- isbn -->
 					<div class="form-group">
-						<label for="isbn">ISBN</label> <input type="text" name="isbn"
-							class="form-control" id="isbn" th:value="${book.isbn}"
-							placeholder="ISBN" /> <span class="help-block">책의 ISBN</span>
+						<label class="col-md-2 control-label" for="isbn">ISBN</label>
+						<div class="col-md-8">
+							<input type="text" name="isbn" class="form-control" id="isbn"
+								th:value="${book.isbn}" placeholder="ISBN" /> <span
+								class="help-block">책의 ISBN</span>
+						</div>
 					</div>
 
 					<!-- 무게 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="무게">무게</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="shippingWeight">무게</label>
+						<div class="col-md-8">
 							<div class="input-group">
 								<input th:value="${book.shippingWeight}" type="number"
 									name="shippingWeight" class="form-control" id="shippingWeight"
@@ -119,8 +136,8 @@
 
 					<!-- 정가 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="정가">정가</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="listPrice">정가</label>
+						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">￦</span> <input
 									th:value="${book.listPrice}" type="number" name="listPrice"
@@ -132,8 +149,8 @@
 
 					<!-- 판매가 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="판매가">판매가</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="ourPrice">판매가</label>
+						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">￦</span> <input
 									th:value="${book.ourPrice}" type="number" name="ourPrice"
@@ -145,8 +162,8 @@
 
 					<!-- 재고 수 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="재고">재고</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="inStockNumber">재고</label>
+						<div class="col-md-8">
 							<input th:value="${book.inStockNumber}" type="number"
 								name="inStockNumber" class="form-control" id="inStockNumber"
 								placeholder="재고 수" /> <span class="help-block">책 재고 수</span>
@@ -155,10 +172,13 @@
 
 					<!-- 판매여부 -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="판매여부">판매여부</label>
-						<div class="col-xs-8">
-							<label><input value="true" type="radio" name="active"
-								class="form-control" /> 판매중 </label> <label><input
+						<label class="col-md-2 control-label" for="판매여부">판매여부</label>
+						<div class="col-md-8">
+							<label>
+							<input value="true" type="radio" name="active"
+								class="form-control" checked="checked"/> 판매중 </label> 
+							<label>
+								<input
 								value="false" type="radio" name="active" class="form-control" />
 								판매중지 </label> <span class="help-block">책의 판매 여부</span>
 						</div>
@@ -166,29 +186,33 @@
 
 					<!-- 설명 -->
 					<div class="form-group">
-						<label for="설명">설명</label>
-						<textarea name="description" rows="5" class="form-control"
-							id="description" th:value="${book.description}"
-							placeholder="책의 설명" />
-						<span class="help-block">책의 설명</span>
+						<label class="col-md-2 control-label" for="description">설명</label>
+						<div class="col-md-8">
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${book.description}"
+								placeholder="책의 설명" />
+							<span class="help-block">책의 설명</span>
+						</div>
 					</div>
 
 					<!-- 책 이미지 -->
 					<div class="form-group">
-						<div class="col-xs-2">
-							<label for="책이미지">책 이미지 업로드</label>
+						<div class="col-md-2 control-label">
+							<label for="bookImage">책 이미지 업로드</label>
 						</div>
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<input id="bookImage" type="file" name="bookImage"
 								th:value="${book.bookImage}" />
 						</div>
 					</div>
 
 					<div class="form-group">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
 						<button type="submit" class="btn btn-success">책 등록하기</button>
 						<a class="btn btn-danger" th:href="@{/}">취소</a>
 					</div>
-
+					</div>
 				</fieldset>
 			</form>
 		</div>

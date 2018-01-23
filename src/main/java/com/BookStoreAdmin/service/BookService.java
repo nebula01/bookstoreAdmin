@@ -11,4 +11,6 @@ public interface BookService {
 
 	// 모든 책 보기
 	List<Book> findAll();
+	
+	Book findOne(Long id);
 }

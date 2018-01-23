@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.BookStoreAdmin.domain.Book;
@@ -57,11 +59,22 @@ public class BookController {
 		return "redirect:bookList";
 	}
 	
+	// 책 목록 보기
 	@RequestMapping("/bookList")
 	public String bookList(Model model) {
 		List<Book> bookList = bookService.findAll();
 		
 		model.addAttribute("bookList", bookList);
 		return "bookList";
+	}
+	
+	// 책 상세보기
+	@RequestMapping("/bookInfo")
+	public String bookInfo(@RequestParam("id") Long id, Model model) {
+		// id에 따른 객체 생성
+		Book book = bookService.findOne(id);
+		
+		model.addAttribute("book", book);
+		return "bookInfo";
 	}
 }

@@ -25,8 +25,10 @@
 						<td><a th:href="@{/book/bookInfo(id=${book.id})}"><span th:text="${book.title}"></span></a></td>
 						<td th:text="${book.author}"></td>
 						<td th:text="${book.category}"></td>
-						<td th:text="${book.listPrice}"></td>
-						<td th:text="${book.ourPrice}"></td>
+						<!-- <td th:text="${book.listPrice}"></td> -->
+						<td>￦<span th:text="${#numbers.formatDecimal(book.listPrice, 0, 'DEFAULT', 0, 'DEFAULT')}"></span></td>
+						<!-- <td th:text="${book.ourPrice}"></td> -->
+						<td>￦<span th:text="${#numbers.formatDecimal(book.ourPrice, 0, 'DEFAULT', 0, 'DEFAULT')}"></span></td>
 						<td th:text="${book.active}"></td>
 						<td>삭제</td>
 					</tr>
@@ -36,5 +38,93 @@
 	</div>
 
 	<div th:replace="common/header :: body-bottom-scripts" />
+	
+	<!-- data table 정의 -->
+	<script type="text/javascript">
+	// 언어 세팅
+	var dtLang = {
+			 en : {
+			  "sEmptyTable" : "No data available in table",
+			  "sInfo" : "Showing _START_ to _END_ of _TOTAL_ entries",
+			  "sInfoEmpty" : "Showing 0 to 0 of 0 entries",
+			  "sInfoFiltered" : "(filtered from _MAX_ total entries)",
+			  "sInfoPostFix" : "",
+			  "sInfoThousands" : ",",
+			  "sLengthMenu" : "Show _MENU_ entries",
+			  "sLoadingRecords" : "Loading...",
+			  "sProcessing" : "Processing...",
+			  "sSearch" : "Search:",
+			  "sZeroRecords" : "No matching records found",
+			  "oPaginate" : {
+			   "sFirst" : "First",
+			   "sLast" : "Last",
+			   "sNext" : "Next",
+			   "sPrevious" : "Previous"
+			  },
+			  "oAria" : {
+			   "sSortAscending" : ": activate to sort column ascending",
+			   "sSortDescending" : ": activate to sort column descending"
+			  }
+			 },
+			 ko : {
+			  "sEmptyTable" : "데이터가 없습니다",
+			  "sInfo" : "_START_ ~ _END_ / 전체: _TOTAL_",
+			  "sInfoEmpty" : "0 - 0 / 0",
+			  "sInfoFiltered" : "(총 _MAX_ 개)",
+			  "sInfoPostFix" : "",
+			  "sInfoThousands" : ",",
+			  "sLengthMenu" : "페이지당 줄수 _MENU_",
+			  "sLoadingRecords" : "읽는중...",
+			  "sProcessing" : "처리중...",
+			  "sSearch" : "검색:",
+			  "sZeroRecords" : "검색 결과가 없습니다",
+			  "oPaginate" : {
+			   "sFirst" : "처음",
+			   "sLast" : "마지막",
+			   "sNext" : "다음",
+			   "sPrevious" : "이전"
+			  },
+			  "oAria" : {
+			   "sSortAscending" : ": 오름차순 정렬",
+			   "sSortDescending" : ": 내림차순 정렬"
+			  }
+			 },
+			 zh : {
+			  "sProcessing" : "处理中...",
+			  "sLengthMenu" : "显示 _MENU_ 项结果",
+			  "sZeroRecords" : "没有匹配结果",
+			  "sInfo" : "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+			  "sInfoEmpty" : "显示第 0 至 0 项结果，共 0 项",
+			  "sInfoFiltered" : "(由 _MAX_ 项结果过滤)",
+			  "sInfoPostFix" : "",
+			  "sSearch" : "搜索:",
+			  "sUrl" : "",
+			  "sEmptyTable" : "表中数据为空",
+			  "sLoadingRecords" : "载入中...",
+			  "sInfoThousands" : ",",
+			  "oPaginate" : {
+			   "sFirst" : "首页",
+			   "sPrevious" : "上页",
+			   "sNext" : "下页",
+			   "sLast" : "末页"
+			  },
+			  "oAria" : {
+			   "sSortAscending" : ": 以升序排列此列",
+			   "sSortDescending" : ": 以降序排列此列"
+			  }
+			 }
+			};
+			
+	
+		$(document).ready(function() {
+			$("#bookListTable").DataTable({
+				"lengthMenu": [[5,10,15,20,-1],[5,10,15,20,"ALL"]],
+				"ordering": false,
+				stateSave: true,
+				"language" : dtLang["ko"] // 한글 사용			
+			});
+		});
+	</script>
+	
 </body>
 </html>
